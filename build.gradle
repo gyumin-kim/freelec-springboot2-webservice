@@ -1,0 +1,35 @@
+// 프로젝트의 plugin 의존성 관리를 위한 설정
+buildscript {
+    ext {   // build.gradle에서 사용할 전역변수 설정
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.gyumin.book'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+// dependencies를 어떤 원격 저장소에서 받을 것인지 설정
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+// dependency 설정
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
